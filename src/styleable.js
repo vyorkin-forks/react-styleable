@@ -39,8 +39,8 @@ export default function styleable(stylesheet) {
 
   return function decorateSource(DecoratedComponent) {
     if (!isClass(DecoratedComponent))
-      return function styledFn(props) {
-        return DecoratedComponent({ ...props, css: { ...stylesheet, ...props.css }})
+      return function styledFn(props, ...args) {
+        return DecoratedComponent({ ...props, css: { ...stylesheet, ...props.css }}, ...args)
       }
     else
       return class Styleable extends React.Component {
